@@ -14,7 +14,7 @@ class HomeView extends Component {
             <View style={styles.container}>
                 <Image source={DotaLogo} style={{width:300, height:200}} resizeMode='contain'/>
                 <View style={{height:10}}/>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('OnSet')}>
                 <Text style={{fontSize:30, fontWeight:'bold', color:theme.BUTTON_DARK}}>PLAY</Text>
                 </TouchableOpacity>
             </View>

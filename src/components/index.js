@@ -1,0 +1,1 @@
+export {HeadNavigate} from './NavigationHeader/HeadNavigate'

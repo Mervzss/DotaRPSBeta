@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TextInput, Image, TouchableOpacity } from 'react-native'
+
+import {HeadNavigate} from '../../components'
+
+import theme from '../../../themes/DefaultTheme/color-styles'
+
+import prolougeImage from '../../../assets/baneprolouge.png'
 
 class OnSetView extends Component {
     static navigationOptions={
@@ -8,8 +14,20 @@ class OnSetView extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>OnSetView</Text>
+
+                <HeadNavigate title='PROLOGUE' 
+                onPressLeft={() => this.props.navigation.goBack()}
+                onPressRight={() => this.props.navigation.navigate('SelectMode')}
+                />
+               
+
+                <TextInput style={styles.inputStyle} 
+                placeholder='Enter your In-Game Name'/>
+
+                <Image source={prolougeImage} style={{width:'90%', height:200, tintColor:theme.APP_COLOR}} 
+                    resizeMode='contain'/>
             </View>
+
         )
     }
 }
@@ -21,11 +39,14 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#d8e5ee',
+      paddingTop:20
       
     },
-    welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
+    inputStyle:{
+        width:'90%', 
+        backgroundColor:theme.INPUT_BG, 
+        fontSize:20, fontWeight:'bold', 
+        textAlign:'center',
+        marginBottom:15
     }
   });
