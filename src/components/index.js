@@ -1,3 +1,5 @@
 export {HeadNavigate} from './NavigationHeader/HeadNavigate'
 export {AutoGrid} from './GridViewing/AutoGrid'
 export {SkillList} from './SkillListing/SkillList'
+export {HealthBar} from './HealthBar/HealthBar'
+export {RPSButton} from './RPSButtons/RPSButtons'
