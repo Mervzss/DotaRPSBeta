@@ -1,7 +1,8 @@
 import { SELECT_HERO } from '../ActionTypes/types'
-
+import Selection from '../../GlobalData/HeroData'
+import { nulll } from '../../GlobalData/HeroData/null'
 initialState={
-    pickedHero: null
+    pickedHero: nulll
 }
 
 export default reducer = (state = initialState, action) =>{
@@ -9,9 +10,12 @@ export default reducer = (state = initialState, action) =>{
         case SELECT_HERO:
         return{
             ...state,
-            pickedHero : action.name
+            pickedHero : Selection(action.id)
         }
         default:
-        return state
+        return {
+            ...state,
+            pickedHero: nulll
+        }
     }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Image, ScrollView } from 'react-native'
+import { View, StyleSheet, Image, ScrollView, Button } from 'react-native'
 import { connect } from 'react-redux'
 
 import { HeadNavigate, AutoGrid } from '../../components'
@@ -17,9 +17,8 @@ class SelectHeroView extends Component {
         header: null
     }
 
-    onUpdatePress= (path)=>{
-        alert(path)
-        this.props.myHeroChoice(path)
+    onUpdatePress= (id)=>{
+        this.props.myHeroChoice(id)
     }
 
     render() {
@@ -27,25 +26,31 @@ class SelectHeroView extends Component {
             <View style={styles.container}>
                 <HeadNavigate title='HERO SELECT'
                     onPressLeft={() => this.props.navigation.goBack()}
-                    onPressRight={() => this.props.navigation.navigate()}
+                    onPressRight={() => this.props.navigation.navigate('GameField')}
                 />
                 <View style={{ width: '90%', height: 300, backgroundColor: theme.INPUT_BG, borderRadius: 20 }}>
                     <ScrollView>
-                        <AutoGrid data={dataSelection} numRows={3} onItemPress={(path) => this.onUpdatePress.bind(this, path)}/>
+                        <AutoGrid data={dataSelection} numRows={3} onItemPress={(id) => this.onUpdatePress.bind(this, id)}/>
                     </ScrollView>
 
                 </View>
 
-                <View style={{ width: '90%', flex: 1 }}>
+                <View style={{ width: '90%', flex: 1, paddingBottom:5}}>
                     <MiniDescription />
                 </View>
+
+                <View style={{width:'90%', marginBottom:5 }}>
+                <Button title='START GAME' onPress={()=> alert('GAME STARTING')} color={theme.BUTTON_DARK} disabled={true}/>
+                </View>
+                
+
             </View>
         )
     }
 }
 const mapDispatchToProps = dispatch =>{
     return{
-        myHeroChoice: path => dispatch(heroSelect(path))
+        myHeroChoice: id => dispatch(heroSelect(id))
     }
 }
 
@@ -57,7 +62,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         backgroundColor: '#d8e5ee',
-        paddingTop: 20
+        paddingTop: 5
 
     },
     outerCircle: {

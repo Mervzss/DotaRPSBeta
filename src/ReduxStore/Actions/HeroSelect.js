@@ -1,8 +1,8 @@
 import { SELECT_HERO } from '../ActionTypes/types'
 
-export const heroSelect = (name) =>{
+export const heroSelect = (id) =>{
     return{
         type: SELECT_HERO,
-        name: name
+        id: id
     }
 }

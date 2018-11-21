@@ -7,7 +7,7 @@ export const AutoGrid = props => {
     // props.data must contain image and id property
     const data = props.data.map(value => {
         return (
-            <TouchableOpacity key={value.id} onPress={props.onItemPress(value.path)}>
+            <TouchableOpacity key={value.id} onPress={props.onItemPress(value.id)}>
             <View style={{ width: 90, height: 90, borderRadius: 160, backgroundColor: theme.BUTTON_MEDIUM }} >
                 <Image source={value.image} style={{ width: 80, height: 80, borderRadius: 160, margin: 5 }} resizeMode='center' />
             </View>
