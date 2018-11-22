@@ -13,18 +13,6 @@ class SkillsView extends Component {
             <View style={styles.container}>
         
                 <SkillList data={skills}/>
-            
-                {/* <View style={{width:'100%', borderBottomColor:theme.APP_BORDER, borderBottomWidth:1, justifyContent:'center'}}>
-                    <View style={{ width: 85, height: 85, backgroundColor: theme.BUTTON_MEDIUM, marginVertical:10 }} >
-                        <Image source={skills.first.image} style={{ width: 75, height: 75, margin: 5 }} resizeMode='contain' />
-                    </View>
-                </View>
-
-                <View style={{width:'100%', borderBottomColor:theme.APP_BORDER, borderBottomWidth:1, justifyContent:'center'}}>
-                    <View style={{ width: 85, height: 85, backgroundColor: theme.BUTTON_MEDIUM, marginVertical:10 }} >
-                        <Image source={skills.second.image} style={{ width: 75, height: 75, margin: 5 }} resizeMode='contain' />
-                    </View>
-                </View> */}
 
             </View>
         )

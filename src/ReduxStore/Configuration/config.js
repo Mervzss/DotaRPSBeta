@@ -1,10 +1,15 @@
 import { combineReducers, createStore, applyMiddleware, compose} from 'redux'
+import thunk from 'redux-thunk'
 
 import HeroSelectReducer from '../Reducers/HeroSelectReducer'
+import PlayerStateReducer from '../Reducers/GameState/PlayerState'
+import AIStateReducer from '../Reducers/GameState/AIState'
 
 const CombineReducers = combineReducers(
     {
-        HeroSelect: HeroSelectReducer
+        HeroSelect: HeroSelectReducer,
+        PlayerState: PlayerStateReducer,
+        AIState: AIStateReducer
     }
 )
 
@@ -15,5 +20,5 @@ if(__DEV__){
 }
 
 export default config = () =>{
-    return createStore(CombineReducers, composeEnhancers())
+    return createStore(CombineReducers, composeEnhancers(applyMiddleware(thunk)))
 }

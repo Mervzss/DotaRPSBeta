@@ -10,14 +10,31 @@ import theme from '../../../themes/DefaultTheme/color-styles'
 
 import MiniDescription from './MiniTabDescription/index'
 
-import {heroSelect} from '../../ReduxStore/Actions/HeroSelect'
+import { heroSelect } from '../../ReduxStore/Actions/HeroSelect'
+
+import { setHeroAI } from '../../ReduxStore/Actions/GameAction/AIAction'
+
+import { setHeroPlayer } from '../../ReduxStore/Actions/GameAction/PlayerAction'
+
+import {DireAI} from '../../GlobalData/AIData/DireAI'
 
 class SelectHeroView extends Component {
     static navigationOptions = {
         header: null
     }
 
-    onUpdatePress= (id)=>{
+    gameStart = () =>{
+    
+        // alert(this.props.pickedHero)
+        this.props.playerHeroSet(this.props.pickedHero)
+        console.log('p', this.props.pickedHero)
+        this.props.aiHeroSet(DireAI)
+        console.log('ai', DireAI)
+        this.props.navigation.navigate('GameField')
+        
+    }
+
+    onUpdatePress = (id) => {
         this.props.myHeroChoice(id)
     }
 
@@ -28,33 +45,45 @@ class SelectHeroView extends Component {
                     onPressLeft={() => this.props.navigation.goBack()}
                     onPressRight={() => this.props.navigation.navigate('GameField')}
                 />
+
                 <View style={{ width: '90%', height: 300, backgroundColor: theme.INPUT_BG, borderRadius: 20 }}>
                     <ScrollView>
-                        <AutoGrid data={dataSelection} numRows={3} onItemPress={(id) => this.onUpdatePress.bind(this, id)}/>
+                        <AutoGrid data={dataSelection} numRows={3} onItemPress={(id) => this.onUpdatePress.bind(this, id)} />
                     </ScrollView>
 
                 </View>
 
-                <View style={{ width: '90%', flex: 1, paddingBottom:5}}>
+                <View style={{ width: '90%', flex: 1, paddingBottom: 5 }}>
                     <MiniDescription />
                 </View>
 
-                <View style={{width:'90%', marginBottom:5 }}>
-                <Button title='START GAME' onPress={()=> alert('GAME STARTING')} color={theme.BUTTON_DARK} disabled={true}/>
+                <View style={{ width: '90%', marginBottom: 5 }}>
+                    <Button title='START GAME' onPress={this.gameStart.bind(this)} color={theme.BUTTON_DARK}
+                        disabled={this.props.isPicked} />
                 </View>
-                
+
 
             </View>
         )
     }
 }
-const mapDispatchToProps = dispatch =>{
-    return{
-        myHeroChoice: id => dispatch(heroSelect(id))
+const mapStateToProps = state => {
+    return {
+        isPicked: state.HeroSelect.isPicked,
+        pickedHero: state.HeroSelect.pickedHero
     }
 }
 
-export default connect(null, mapDispatchToProps)(SelectHeroView) ;
+const mapDispatchToProps = dispatch => {
+    return {
+        myHeroChoice: id => dispatch(heroSelect(id)),
+
+        playerHeroSet: val => dispatch(setHeroPlayer(val)),
+        aiHeroSet: val => dispatch(setHeroAI(val))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectHeroView);
 
 const styles = StyleSheet.create({
     container: {

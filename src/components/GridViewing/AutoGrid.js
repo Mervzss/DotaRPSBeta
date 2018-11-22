@@ -31,9 +31,6 @@ export const AutoGrid = props => {
         )
         startValue += incrementValue
         finalValue += incrementValue
-            console.log('Start', startValue)
-            console.log('Final', finalValue)
-            console.log('length', data.length)
         data.length < finalValue ? (finalValue = data.length) : null
 
     } while (data.length > startValue)
