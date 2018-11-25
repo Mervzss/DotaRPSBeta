@@ -31,7 +31,10 @@ export const Ursa = {
         // let mapIt = enemyData.BuffDebuff.map(val => val)
         // console.log(mapIt)
         let addATK =  0
-        if(enemyData.debuff.debuffID.length > 0){
+        let findPassive = enemyData.debuff.debuffID.filter(val =>{
+            return val === 'Fury Swipes'
+        })
+        if(findPassive.length > 0){
             addATK = ((enemyData.debuff.debuffHash['Fury Swipes'].stack +1) * 2)
         }
         return {
@@ -74,7 +77,8 @@ export const Ursa = {
                     // }
                 }
             },
-            skillDebuff:{
+            skillDebuff:
+            {
             name:'Earth Shock',
             DMGperTurn: 0,
             stack: 0,

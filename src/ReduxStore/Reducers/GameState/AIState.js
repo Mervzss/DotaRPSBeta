@@ -43,6 +43,7 @@ export default reducerAIS = (state = initialState, action) =>{
             return item === action.id // return all the items not matching the action.id
     
           })
+          console.log(reDebuff)
           let arrayUpdate
           if(reDebuff.length === 0){
             arrayUpdate = [...state.chosenAI.debuff.debuffID, action.id]
@@ -54,12 +55,18 @@ export default reducerAIS = (state = initialState, action) =>{
           }
           else{
             arrayUpdate = [...state.chosenAI.debuff.debuffID]
-
-            state.chosenAI.debuff.debuffHash[action.id] = {
-                ...state.chosenAI.debuff.debuffHash[action.id],
-                stack: state.chosenAI.debuff.debuffHash[action.id].stack + 1,
-                interval: action.addDebuff.interval
+            state.chosenAI.debuff.debuffHash={
+                ...state.chosenAI.debuff.debuffHash,
+                [action.id]:{
+                    stack: state.chosenAI.debuff.debuffHash[action.id].stack + 1,
+                    interval: action.addDebuff.interval
+                }
             }
+            // state.chosenAI.debuff.debuffHash[action.id] = {
+            //     ...state.chosenAI.debuff.debuffHash[action.id],
+            //     stack: state.chosenAI.debuff.debuffHash[action.id].stack + 1,
+            //     interval: action.addDebuff.interval
+            // }
           }
          
         return {
