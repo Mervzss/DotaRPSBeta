@@ -8,6 +8,8 @@ export const Sven ={
     job: 'Rogue Knight',
     image: require('DotaRPSBeta/assets/DotaHeroes/Sven/sven.png'),
     description: 'Sven is always eager to charge into a fight. He stuns grouped enemies as he wades into battle, and once he ignites his damage-boosting ultimate, he destroy enmey with few swings',
+    chanceTurn:false,
+    BuffDebuff:[],
     stats:{
         HP: 50,
         maxHP: 50,

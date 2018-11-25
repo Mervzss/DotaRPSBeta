@@ -7,6 +7,14 @@ export const DireAI ={
     job: 'Water Boy',
     image: require('DotaRPSBeta/assets/DotaAI/RadiantAI/radiant-creep.jpg'),
     description: 'A Strong AI Opponent',
+    chanceTurn:0,
+    Buff:[],
+    debuff:{
+        debuffID:[],
+        debuffHash:{
+            
+        }
+    },
     stats:{
         HP: 50,
         ATK: 2,

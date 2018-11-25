@@ -7,6 +7,14 @@ export const DireAI ={
     job: 'Errand Boy',
     image: require('DotaRPSBeta/assets/DotaAI/DireAI/dire-creep.jpg'),
     description: 'A Strong AI Opponent',
+    chanceTurn:0,
+    Buff:[],
+    debuff:{
+        debuffID:[],
+        debuffHash:{
+            
+        }
+    },
     stats:{
         HP: 50,
         maxHP: 50,
