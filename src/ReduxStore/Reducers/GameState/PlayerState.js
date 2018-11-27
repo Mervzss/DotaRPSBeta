@@ -34,7 +34,6 @@ export default reducerPS = (state = initialState, action) =>{
             },
         }
         case SET_HERO_PLAYER:
-        console.log("SETTING PLAER",action.chosenHero)
         return{
             ...state,
             chosenHero: action.chosenHero

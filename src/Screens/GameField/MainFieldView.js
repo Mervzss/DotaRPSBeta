@@ -10,7 +10,7 @@ import Solver from '../../FunctionGenerator/AILogic/RPS/RPSSolver'
 import { jackEnPoyPlayer, generalSkill, attackAI, debuffingAI } from '../../ReduxStore/Actions/GameAction/PlayerAction'
 import { jackEnPoyAI } from '../../ReduxStore/Actions/GameAction/AIAction'
 
-import { OnGameList } from '../../components/index'
+import { OnGameList, DebuffView } from '../../components/index'
 
 import AttackIcon from '../../../assets/User-graphic/DMG2.png'
 
@@ -71,15 +71,17 @@ class MainFieldView extends Component {
                 <View style={{ width: '90%', height: 90, backgroundColor: theme.INPUT_BG, marginBottom: 10, flexDirection: 'row' }}>
                     <Image source={this.props.AI.image} style={{ width: '20%', height: 80, backgroundColor: theme.BUTTON_DARK, margin: 5 }} />
                     <View style={{ width: '80%', marginLeft: 10 }}>
-                        <HealthBar name='HP' health={((this.props.AI.stats.HP / this.props.AI.stats.maxHP) * 100)} colorHP='green' />
+                        <HealthBar name='HP' updateHealth={this.props.AI.stats.HP} health={((this.props.AI.stats.HP / this.props.AI.stats.maxHP) * 100)} colorHP='green' />
                         <View style={{ flexDirection: 'row' }}>
                             <Text>ATK: 5</Text>
                         </View>
-                        
-                            {this.props.AI.debuff.debuffID.length > 0 ? 
-                            (<View><Image source={this.props.AI.debuff.debuffHash[this.props.AI.debuff.debuffID[0]].image} style={{ width: 25, height: 25, borderRadius: 5, }} resizeMode='center'/>
+
+                            <DebuffView data={this.props.AI.debuff}/>
+                            {/* {this.props.AI.debuff.debuffID.length > 0 ? 
+                            (<View><Image source={this.props.AI.debuff.debuffHash[this.props.AI.debuff.debuffID[0]].image} 
+                            style={{ width: 25, height: 25, borderRadius: 5, }} resizeMode='center'/>
                             <Text> {this.props.AI.debuff.debuffHash[this.props.AI.debuff.debuffID[0]].interval}</Text></View>)
-                            : null}
+                            : null} */}
                             
                         
 
@@ -89,6 +91,7 @@ class MainFieldView extends Component {
                 {/* RPS FIELD */}
                 <View style={{ height: 200, width: '90%', backgroundColor: theme.INPUT_BG, marginVertical: 10, borderRadius: 10, justifyContent: 'space-evenly', alignItems: 'center', flexDirection: 'row' }}>
                     <Image source={this.props.RPSImagepickedPlayer} style={{ width: 100, height: 100, borderRadius: 180, }} resizeMode='center' />
+                    <Text>{this.props.AI.dealtDamage}</Text>
                     <Image source={this.props.RPSImagepickedAI} style={{ width: 100, height: 100, borderRadius: 180, }} resizeMode='center' />
                 </View>
 
@@ -107,7 +110,7 @@ class MainFieldView extends Component {
                 {/* PLAYER HP AND STUFF */}
                 <View style={{ width: '90%', flexDirection: 'row', justifyContent: 'space-between' }}>
                     <View style={{ width: '60%' }}>
-                        <HealthBar name='HP' health={((this.props.Player.stats.HP / this.props.Player.stats.maxHP) * 100)} colorHP='green' />
+                        <HealthBar name='HP' updateHealth={this.props.Player.stats.HP} health={((this.props.Player.stats.HP / this.props.Player.stats.maxHP) * 100)} colorHP='green' />
                     </View>
 
                     <View style={{ width: '40%', flexDirection: 'row', }}>

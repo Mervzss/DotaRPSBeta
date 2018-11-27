@@ -23,6 +23,9 @@ export const HealthBar = props => {
             <View style={{ width: '100%', height: 20, borderColor: theme.APP_BORDER, borderWidth: 1, justifyContent: 'center' }}>
                 <View style={{ height: '90%', width: props.health.toString() + '%', backgroundColor: checkHealth(props.health) }} />
             </View>
+            
+            <Text style={{transform:[{translateX:-125}, {translateY:0}]}}>{props.updateHealth.toFixed(2)}</Text>
+            
         </View>
     )
 }

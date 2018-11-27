@@ -58,6 +58,7 @@ export default reducerAIS = (state = initialState, action) =>{
             state.chosenAI.debuff.debuffHash={
                 ...state.chosenAI.debuff.debuffHash,
                 [action.id]:{
+                    ...state.chosenAI.debuff.debuffHash[action.id],
                     stack: state.chosenAI.debuff.debuffHash[action.id].stack + 1,
                     interval: action.addDebuff.interval
                 }
@@ -91,7 +92,7 @@ export default reducerAIS = (state = initialState, action) =>{
         
         let i = 0
         let id = action.debuffID
-        console.log(state.chosenAI.debuff.debuffHash[id[i]].interval)        
+        // console.log(state.chosenAI.debuff.debuffHash[id[i]])        
         do{
             state.chosenAI.debuff.debuffHash[id[i]] = {
 

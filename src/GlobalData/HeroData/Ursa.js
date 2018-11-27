@@ -7,7 +7,8 @@ export const Ursa = {
     image: require('DotaRPSBeta/assets/DotaHeroes/Ursa/ursa.png'),
     description: `With each swipe of his claws, Ursa increases his target's vulnerability to his next attack. Capable of briefly increasing how swiftly he can strike, and able to slow down nearby prey, he quickly tears apart his enemies.`,
     chanceTurn:false,
-    Buff:[],
+    dealtDamage:0,
+    Buff:[],  
     debuff:{
         debuffID:[],
         debuffHash:{
@@ -35,10 +36,11 @@ export const Ursa = {
             return val === 'Fury Swipes'
         })
         if(findPassive.length > 0){
-            addATK = ((enemyData.debuff.debuffHash['Fury Swipes'].stack +1) * 2)
+            addATK = ((enemyData.debuff.debuffHash['Fury Swipes'].stack) * 2)
         }
         return {
             ...enemyData,
+            dealtDamage: (playerData.stats.ATK + addATK),
             stats:{
                 ...enemyData.stats,
                 HP: (enemyData.stats.HP - (playerData.stats.ATK + addATK))
@@ -49,7 +51,7 @@ export const Ursa = {
             {
             name:'Fury Swipes',
             DMGperTurn: 0,
-            stack: 0,
+            stack: 1,
             image: require('DotaRPSBeta/assets/DotaHeroes/Ursa/Skills/fury-swipes.png'),
             interval:3,
             }

@@ -27,9 +27,9 @@ class SelectHeroView extends Component {
     
         // alert(this.props.pickedHero)
         this.props.playerHeroSet(this.props.pickedHero)
-        console.log('p', this.props.pickedHero)
+        // console.log('p', this.props.pickedHero)
         this.props.aiHeroSet(DireAI)
-        console.log('ai', DireAI)
+        // console.log('ai', DireAI)
         this.props.navigation.navigate('GameField')
         
     }

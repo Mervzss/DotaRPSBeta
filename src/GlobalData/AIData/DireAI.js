@@ -7,7 +7,8 @@ export const DireAI ={
     job: 'Errand Boy',
     image: require('DotaRPSBeta/assets/DotaAI/DireAI/dire-creep.jpg'),
     description: 'A Strong AI Opponent',
-    chanceTurn:0,
+    chanceTurn:false,
+    dealtDamage:0,
     Buff:[],
     debuff:{
         debuffID:[],
@@ -16,8 +17,8 @@ export const DireAI ={
         }
     },
     stats:{
-        HP: 50,
-        maxHP: 50,
+        HP: 1000,
+        maxHP: 1000,
         ATK: 2,
         SR: '---',
         type: AGI
