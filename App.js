@@ -3,6 +3,7 @@ import { createSwitchNavigator, createAppContainer } from 'react-navigation'
 
 import HomeStack from './src/Screens/HomeLogStacks/index'
 import GameFieldStack from './src/Screens/GameField/index'
+
 export default class App extends Component{
   render() {
     return <SwitchContainer/>

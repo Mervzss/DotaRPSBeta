@@ -17,8 +17,8 @@ export const DireAI ={
         }
     },
     stats:{
-        HP: 1000,
-        maxHP: 1000,
+        HP: 50,
+        maxHP: 50,
         ATK: 2,
         SR: '---',
         type: AGI

@@ -5,6 +5,7 @@ export const Ursa = {
     name:'Ulfasaar',
     job: 'Ursa Warrior',
     image: require('DotaRPSBeta/assets/DotaHeroes/Ursa/ursa.png'),
+    design: {BG:'#F77777',FG:'#340000',BR:'#9E1717'},
     description: `With each swipe of his claws, Ursa increases his target's vulnerability to his next attack. Capable of briefly increasing how swiftly he can strike, and able to slow down nearby prey, he quickly tears apart his enemies.`,
     chanceTurn:false,
     dealtDamage:0,

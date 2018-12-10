@@ -6,10 +6,10 @@ export const OnGameList = props => {
     return props.data.map((value, index) => {
         return (
             <TouchableOpacity key={index} onPress={props.onPress(value.target, value.skillAction, value.skillDebuff)}>
-             <View style={{ width: 82, height: 82, borderRadius: 15, backgroundColor: theme.APP_BORDER }} >
-             <Image source={value.image} style={{ width: 72,height: 72, backgroundColor: theme.BUTTON_DARK, margin: 5, borderRadius:10 }}  />
+             <View style={{ width: 82, height: 82, borderRadius: 15, backgroundColor: props.design.BR }} >
+             <Image source={value.image} style={{ width: 72,height: 72, backgroundColor: props.design.BG, margin: 5, borderRadius:10, tintColor:props.design.FG }}  />
              </View>
-                
+             
             </TouchableOpacity>
 
         )
